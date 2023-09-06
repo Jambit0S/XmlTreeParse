@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace WinFormApp
+﻿namespace WinFormApp
 {
 	/// <summary>
 	/// Текст ошибок.
@@ -12,6 +6,9 @@ namespace WinFormApp
 	public static class ErrorMessageText
 	{
 		public static string Warning { get; } = "Внимание!";
+		public static string Error { get; } = "Ошибка!";
 		public static string WrongNodeSelect { get; } = "Пожалуйста, выберите дочерний узел";
+		public static string ErrorMessageExplorerSaveFile { get; } = "Ошибка при сохранении файла!";
+		public static string ErrorMessageExplorerGetFile { get; } = "Ошибка при выборе файла!";
 	}
 }

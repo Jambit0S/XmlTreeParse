@@ -1,4 +1,4 @@
-﻿using System.Configuration;
+﻿using System;
 using System.Xml.Linq;
 
 namespace XmlHandler
@@ -9,10 +9,16 @@ namespace XmlHandler
 		/// Сохранение XML-документа
 		/// </summary>
 		/// <param name="element">Документ.</param>
-		public static void Save(XElement element)
+		public static void Save(XElement element, string dir)
 		{
-			var dir = ConfigurationManager.AppSettings["xmlojbectdirectory"];
-			element.Save(dir);
+			if (!string.IsNullOrEmpty(dir))
+			{
+				element.Save(dir);
+			}
+			else
+			{
+				throw new ArgumentException("Некорректный путь к новому объекту");
+			}
 		}
 	}
 }

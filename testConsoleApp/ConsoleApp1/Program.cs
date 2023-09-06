@@ -22,7 +22,7 @@ namespace ConsoleApp1
 			var xmlObj = res.GetObjectXml("24:21:1003001:1", "land_record");
 
 			//Сохранение объекта.
-			XmlSave.Save(xmlObj);
+			XmlSave.Save(xmlObj, ConfigurationManager.AppSettings["xmlojbectdirectory"]);
 
 			Console.ReadLine();
 		}

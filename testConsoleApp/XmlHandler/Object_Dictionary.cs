@@ -15,7 +15,7 @@ namespace XmlHandler
 			{ "build_record", "cad_number" },
 			{ "construction_record", "cad_number" },
 			{ "land_record", "cad_number" },
-			{ "municipal_boundaries", "reg_numb_border" },
+			{ "municipal_boundary_record", "reg_numb_border" },
 			{ "spatial_data", "sk_id" },
 			{ "zones_and_territories_record", "reg_numb_border" }
 		};
