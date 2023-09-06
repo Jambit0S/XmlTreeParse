@@ -26,6 +26,7 @@
 			<TreeView.Resources>
 				<ContextMenu x:Key ="SolutionContext"  StaysOpen="true">
 					<MenuItem Header="Save" Click="SaveNodeInFile"/>
+					<MenuItem Header="Show" Click="SHowNodeInConsole"/>
 				</ContextMenu>
 			</TreeView.Resources>
 		</TreeView>

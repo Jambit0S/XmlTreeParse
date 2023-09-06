@@ -35,6 +35,7 @@
 			this.TextBoxPath = new System.Windows.Forms.TextBox();
 			this.ButtonOpenFileExplorer = new System.Windows.Forms.Button();
 			this.label1 = new System.Windows.Forms.Label();
+			this.showToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.contextMenuSave.SuspendLayout();
 			this.SuspendLayout();
 			// 
@@ -49,14 +50,15 @@
 			// contextMenuSave
 			// 
 			this.contextMenuSave.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.saveToolStripMenuItem});
+            this.saveToolStripMenuItem,
+            this.showToolStripMenuItem});
 			this.contextMenuSave.Name = "contextMenuSave";
-			this.contextMenuSave.Size = new System.Drawing.Size(99, 26);
+			this.contextMenuSave.Size = new System.Drawing.Size(181, 70);
 			// 
 			// saveToolStripMenuItem
 			// 
 			this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-			this.saveToolStripMenuItem.Size = new System.Drawing.Size(98, 22);
+			this.saveToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
 			this.saveToolStripMenuItem.Text = "Save";
 			this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
 			// 
@@ -87,6 +89,13 @@
 			this.label1.TabIndex = 3;
 			this.label1.Text = "Path :";
 			// 
+			// showToolStripMenuItem
+			// 
+			this.showToolStripMenuItem.Name = "showToolStripMenuItem";
+			this.showToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.showToolStripMenuItem.Text = "Show";
+			this.showToolStripMenuItem.Click += new System.EventHandler(this.showToolStripMenuItem_Click);
+			// 
 			// TreeForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -112,6 +121,7 @@
 		private System.Windows.Forms.TextBox TextBoxPath;
 		private System.Windows.Forms.Button ButtonOpenFileExplorer;
 		private System.Windows.Forms.Label label1;
+		private System.Windows.Forms.ToolStripMenuItem showToolStripMenuItem;
 	}
 }
 

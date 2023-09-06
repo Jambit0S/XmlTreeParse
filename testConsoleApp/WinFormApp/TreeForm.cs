@@ -118,5 +118,28 @@ namespace WinFormApp
 				});
 			}
 		}
+
+		/// <summary>
+		/// Вывод документа в консоль.
+		/// </summary>
+		/// <param name="sender">Ссылка на объект, вызвавший событие.</param>
+		/// <param name="e">Объект события.</para
+		private void showToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			var selectedNode = XmlTreeView.SelectedNode;
+
+			if (selectedNode != null && selectedNode.Nodes.Count == 0 && selectedNode.Parent != null)
+			{
+				var res = new XmlHandler.XmlHandler(ConfigurationManager.AppSettings["xmldata"]);
+
+				var xmlObj = res.GetObjectXml(selectedNode.Text, selectedNode.Parent.Text);
+
+				Console.WriteLine(xmlObj.ToString());
+			}
+			else
+			{
+				MessageBox.Show(ErrorMessageText.WrongNodeSelect, ErrorMessageText.Warning);
+			}
+		}
 	}
 }

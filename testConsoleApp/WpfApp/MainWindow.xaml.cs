@@ -1,4 +1,5 @@
 ﻿using Microsoft.Win32;
+using System;
 using System.Configuration;
 using System.Linq;
 using System.Windows;
@@ -168,5 +169,30 @@ namespace WpfApp
 		{
 			XmlTreeView.Tag = e.OriginalSource;
 		}
-	}
+
+		/// <summary>
+		/// Вывод документа в консоль.
+		/// </summary>
+		/// <param name="sender">Ссылка на объект, вызвавший событие.</param>
+		/// <param name="e">Объект события.</para
+		private void SHowNodeInConsole(object sender, RoutedEventArgs e)
+		{
+			var selectedNode = XmlTreeView.Tag as TreeViewItem;
+
+			if (selectedNode != null && selectedNode.Items.Count == 0 && selectedNode.Parent != null)
+			{
+				var res = new XmlHandler.XmlHandler(ConfigurationManager.AppSettings["xmldata"]);
+
+				var treeitem = (TreeViewItem)GetSelectedTreeViewItemParent(selectedNode);
+
+				var xmlObj = res.GetObjectXml(selectedNode.Header.ToString(), treeitem.Header.ToString());
+
+				Console.WriteLine(xmlObj.ToString());
+			}
+			else
+			{
+				MessageBox.Show(ErrorMessageText.WrongNodeSelect, ErrorMessageText.Warning);
+			}
+		}
+    }
 }
