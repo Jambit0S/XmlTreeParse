@@ -27,7 +27,6 @@ namespace WinFormApp
 
 			if (selectedNode != null && selectedNode.Nodes.Count == 0 && selectedNode.Parent != null)
 			{
-				//Путь к новому файлу лежит в конфигурации проекта.
 				var res = new XmlHandler.XmlHandler(ConfigurationManager.AppSettings["xmldata"]);
 
 				var xmlObj = res.GetObjectXml(selectedNode.Text, selectedNode.Parent.Text);
@@ -46,6 +45,7 @@ namespace WinFormApp
 		/// <param name="element">Xml-объект.</param>
 		private void SaveFile(XElement element)
 		{
+			// Настройки проводника.
 			SaveFileDialog saveFileDialog1 = new SaveFileDialog();
 			saveFileDialog1.Filter = "XML Files (*.xml)|*.xml";
 			saveFileDialog1.Title = "Save an XML File";
@@ -68,8 +68,8 @@ namespace WinFormApp
 		/// <param name="e">Объект события.</param>
 		private void ButtonOpenFileExplorer_Click(object sender, EventArgs e)
 		{
-			OpenFileDialog folderBrowser = new OpenFileDialog();
-
+			// Настройки проводника.
+			OpenFileDialog folderBrowser = new OpenFileDialog();			
 			folderBrowser.Filter = "XML Files (*.xml)|*.xml";
 			folderBrowser.Title = "Get an XML File";
 			folderBrowser.ValidateNames = false;
@@ -94,25 +94,27 @@ namespace WinFormApp
 		{
 			XmlTreeView.Nodes.Clear();
 
+			// Путь к документу.
 			var uri = string.IsNullOrEmpty(url)
 				? ConfigurationManager.AppSettings["xmldata"]
 				: url;
 
-			var res = new XmlHandler.XmlHandler(uri);
+			var result = new XmlHandler.XmlHandler(uri);
 
+			// Получение тегов из словаря.
 			var tags = Object_Dictionary.Tag_id.Select(item => item.Key).ToList();
 
-			foreach (var tag in tags)
+			foreach (var tag in tags)	// Добавление всех PK по тегам.
 			{
 				var guid = Guid.NewGuid().ToString();
 
-				XmlTreeView.Nodes.Add(guid, tag);
+				XmlTreeView.Nodes.Add(guid, tag); // Родительский узел.
 
-				var allId = res.GetObjectsId(tag);
+				var allId = result.GetObjectsId(tag);
 
 				allId.ForEach(item =>
 				{
-					XmlTreeView.Nodes.Find(guid, false).First().Nodes.Add(item);
+					XmlTreeView.Nodes.Find(guid, false).First().Nodes.Add(item); // Наследник.
 				});
 			}
 		}
